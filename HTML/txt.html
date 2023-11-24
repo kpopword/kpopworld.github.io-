@@ -1,0 +1,128 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Música</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000000;
+        }
+
+        #music-player {
+            text-align: center;
+            background-color: #000000;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgb(250, 14, 159);
+        }
+
+        #song-image {
+            max-width: 40%;
+            border-radius: 8px;
+        }
+
+        audio {
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        #song-title {
+            margin-top: 10px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .control-button {
+            font-size: 24px;
+            cursor: pointer;
+            background-color: #d639ce;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .control-button:hover {
+            background-color:  #d639ce;
+        }
+    </style>
+</head>
+<body>
+
+<div id="music-player">
+    <img id="song-image" src="txt.jpg" alt="Imagen de la canción">
+    <h2  style="color: rgb(255, 255, 255)" id="song-title">The Name Chapter: Freefall</h2>
+    <p> <h4 style="color: rgb(255, 255, 255)" id="song-title">TOMORROW X TOGETHER</h4></p>
+    <audio controls id="audio-player">
+        <!-- No es necesario especificar la fuente aquí, ya que la cambiaremos con JavaScript -->
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    <div id="controls">
+        <div class="control-button" id="prev-button" onclick="prevSong()"><i class="fas fa-backward"></i></div>
+        <div class="control-button" id="pause-button" onclick="togglePlayPause()"><i class="fas fa-play"></i></div>
+        <div class="control-button" id="next-button" onclick="nextSong()"><i class="fas fa-forward"></i></div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    const audioPlayer = document.getElementById('audio-player');
+    const songImage = document.getElementById('song-image');
+    const songTitle = document.getElementById('song-title');
+
+    // Lista de canciones
+    const songs = [
+        { title: 'Chasing That Feeling', src:'../musica/Chasing That Feeling(MP3_160K).mp3', image: '../imagenes/txt.jpg' },
+        { title: 'Happily Ever After', src: '../musica/Happily Ever After(MP3_160K).mp3', image:'../imagenes/txt.jpg' },
+        { title: 'Dreamer', src: '../musica/Dreamer(MP3_160K).mp3', image: '../imagenes/txt.jpg' },
+        { title: 'Growing Pain', src: '../musica/Growing Pain(MP3_160K).mp3', image:'../imagenes/txt.jpg' },
+        // Agrega más canciones según sea necesario
+    ];
+
+    let currentSongIndex = 0;
+
+    function togglePlayPause() {
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+            document.getElementById('pause-button').innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+            audioPlayer.pause();
+            document.getElementById('pause-button').innerHTML = '<i class="fas fa-play"></i>';
+        }
+    }
+
+    function nextSong() {
+        currentSongIndex = (currentSongIndex + 1) % songs.length;
+        changeSong();
+    }
+
+    function prevSong() {
+        currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+        changeSong();
+    }
+
+    function changeSong() {
+        const currentSong = songs[currentSongIndex];
+        audioPlayer.src = currentSong.src;
+        songImage.src = currentSong.image;
+        songTitle.innerText = currentSong.title;
+        audioPlayer.play();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+body {
+    background-color: #000000;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #c70000;
+    color: #000000;
+    text-align: center;
+    padding: 1em;
+}
+
+h1 {
+    margin: 0;
+}
+
+.featured, .gallery {
+    margin: 20px;
+}
+
+.item {
+    width: 27%;
+    margin: 20px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.item img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+h3, p {
+    color: #f3bfbf;
+}
+
+footer {
+    background-color: #000000;
+    color: #000000;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

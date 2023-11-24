@@ -1,0 +1,28 @@
+h1 {
+	color: green;
+	font-style: italic;
+}
+#menu ul{
+list-style-type: none;
+margin: 0px;
+padding: 0px;
+width: 200px;
+font-family: Arial, sans-serif;
+font-size: 11pt;
+}
+#menu ul li{
+	background-color: #1e2b3d;
+}
+#menu ul li a{
+color:#ccc;
+text-decoration: none;
+text-transform: uppercase;
+display: block;
+padding: 10px 10px 10px 20px;
+}
+#menu ul li a:hover {
+	background: #e69b9b;
+border-left: 10px solid #333;
+color: #fff;
+}
+border-left: 10px solid #666; 
